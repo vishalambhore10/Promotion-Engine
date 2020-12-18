@@ -8,6 +8,12 @@ import java.util.Set;
 public class PromotionCD implements IPromotion{
     Set<SKUItem> skuList;
     int price;
+
+    public PromotionCD(Set<SKUItem> skuList, int price) {
+        this.skuList = skuList;
+        this.price = price;
+    }
+
     @Override
     public boolean isApplicable(CartItem... cartItem) {
 

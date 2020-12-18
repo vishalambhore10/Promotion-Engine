@@ -1,11 +1,18 @@
 package services.Promotion;
 
 import Models.CartItem;
+import Models.SKUItem;
 
 public class PromotionB implements IPromotion{
     Models.SKUItem SKUItem;
     int quantity;
     int price;
+
+    public PromotionB(Models.SKUItem SKUItem, int quantity, int price) {
+        this.SKUItem = SKUItem;
+        this.quantity = quantity;
+        this.price = price;
+    }
 
     @Override
     public boolean isApplicable(CartItem ...cartItem) {

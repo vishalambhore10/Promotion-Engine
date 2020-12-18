@@ -6,6 +6,13 @@ import Models.SKUItem;
 public class PromotionA implements IPromotion{
     SKUItem SKUItem;
     int quantity;
+
+    public PromotionA(Models.SKUItem SKUItem, int quantity, int price) {
+        this.SKUItem = SKUItem;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
     int price;
 
     @Override
@@ -21,4 +28,6 @@ public class PromotionA implements IPromotion{
         int discountedPrice = price + ((cartItem[0].getQuantity() - this.quantity) * cartItem[0].getSKUitem().getPrice());
         return discountedPrice;
     }
+
+
 }
