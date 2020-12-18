@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CartPricecalculatorService {
 
-    public int  calculateTotalPrice(CartServices cart)
+    public int  calculateTotalPrice(Cart cart)
     {
         int totalPrice = 0;
         List<CartItem> ramainingCartItems = new ArrayList<>();

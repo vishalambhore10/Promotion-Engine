@@ -8,8 +8,9 @@ import java.util.Set;
 public class PromotionService {
     static Set<IPromotion> activePromotions = new HashSet<>();
 
-    public static void addToActivePromotion(IPromotion promotion){
-        activePromotions.add(promotion);
+    public static void addToActivePromotion(IPromotion... promotion){
+        for(IPromotion p:promotion)
+            activePromotions.add(p);
     }
 
     public static int calculatePromotion(CartItem... cartItem)

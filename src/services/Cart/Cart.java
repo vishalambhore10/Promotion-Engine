@@ -5,7 +5,7 @@ import Models.CartItem;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CartServices {
+public class Cart {
     private Set<CartItem> cartItems = new HashSet<>();
 
     public void addCartItem(CartItem cartItem){
