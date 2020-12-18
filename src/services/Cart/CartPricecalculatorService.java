@@ -21,7 +21,7 @@ public class CartPricecalculatorService {
             else
                 ramainingCartItems.add(cartItem);
         }
-        int remainingPrice = PromotionService.calculatePromotion(ramainingCartItems.toArray(new CartItem[ramainingCartItems.size()]));
+        int remainingPrice = PromotionService.calculateRemainiingPrice(ramainingCartItems);
         System.out.print(totalPrice + remainingPrice);
         return totalPrice + remainingPrice;
     }

@@ -7,8 +7,12 @@ import services.Cart.Cart;
 import services.Cart.CartPricecalculatorService;
 import services.Promotion.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CartPricecalculatorServiceTest {
 
@@ -24,15 +28,18 @@ class CartPricecalculatorServiceTest {
         IPromotion promotionB=new PromotionB(sku2,2,45);
         IPromotion promotionCD=new PromotionCD(new HashSet<>(Arrays.asList(sku3,sku4)),30);
 
-        PromotionService.addToActivePromotion((IPromotion) new HashSet<>(Arrays.asList(promotionA,promotionB,promotionCD)));
+
+        PromotionService.addToActivePromotion(promotionA);
+        PromotionService.addToActivePromotion(promotionB);
+        PromotionService.addToActivePromotion(promotionCD);
 
         Cart cart = new Cart();
         cart.addCartItem(new CartItem(1,sku1));
-        cart.addCartItem(new CartItem(1,sku1));
-        cart.addCartItem(new CartItem(1,sku1));
+        cart.addCartItem(new CartItem(1,sku2));
+        cart.addCartItem(new CartItem(1,sku3));
 
         CartPricecalculatorService cartService =new CartPricecalculatorService();
-        cartService.calculateTotalPrice(cart);
+        assertEquals(100,cartService.calculateTotalPrice(cart));
 
 
     }
