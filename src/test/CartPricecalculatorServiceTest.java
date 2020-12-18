@@ -55,4 +55,33 @@ class CartPricecalculatorServiceTest {
 
         assertEquals(370,cartService.calculateTotalPrice(cart));
     }
+    @Test
+    void testcase3(){
+        PromotionService.addToActivePromotion(promotionA);
+        PromotionService.addToActivePromotion(promotionB);
+        PromotionService.addToActivePromotion(promotionCD);
+
+        Cart cart = new Cart();
+        cart.addCartItem(new CartItem(3,sku1));
+        cart.addCartItem(new CartItem(5,sku2));
+        cart.addCartItem(new CartItem(1,sku3));
+        cart.addCartItem(new CartItem(1,sku4));
+
+        assertEquals(280,cartService.calculateTotalPrice(cart));
+    }
+
+    @Test
+    void testcase4(){
+        PromotionService.addToActivePromotion(promotionA);
+        PromotionService.addToActivePromotion(promotionB);
+        PromotionService.addToActivePromotion(promotionCD);
+
+        Cart cart = new Cart();
+        cart.addCartItem(new CartItem(3,sku1));
+        cart.addCartItem(new CartItem(5,sku2));
+        cart.addCartItem(new CartItem(2,sku3));
+        cart.addCartItem(new CartItem(1,sku4));
+
+        assertEquals(300,cartService.calculateTotalPrice(cart));
+    }
 }

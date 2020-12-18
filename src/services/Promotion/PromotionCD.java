@@ -35,14 +35,23 @@ public class PromotionCD implements IPromotion{
         if(!isApplicable(cartItem))
             return -1;
         int itemPrice = 0;
+        int mn=Integer.MAX_VALUE;
+        int mx=Integer.MIN_VALUE;
+        CartItem id1=null,id2 = null;
         for(CartItem item : cartItem)
         {
-            if(!skuList.contains(item.getSKUitem()))
-            {
-                itemPrice += item.getSKUitem().getPrice() * item.getQuantity();
+            int temp=item.getQuantity();
+            int temp1=item.getQuantity();
+            if(temp<mn) {
+                mn =temp;
+                id1=item;
             }
-
+            if(temp1>mx) {
+                mx =temp1;
+                id2=item;
+            }
         }
-        return price + itemPrice;
+
+        return price * mn+ id2.getSKUitem().getPrice()*(mx-mn);
     }
 }

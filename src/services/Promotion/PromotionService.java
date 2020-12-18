@@ -14,7 +14,7 @@ public class PromotionService {
             activePromotions.add(p);
     }
 
-    public static int calculatePromotion(CartItem cartItem)
+    public static int calculatePromotion(CartItem... cartItem)
     {
         for(IPromotion promotion : activePromotions)
         {
