@@ -3,11 +3,11 @@ package Models;
 public class CartItem {
 
     int quantity;
-    SKUItem itemSKU;
+    SKUItem SKUitem;
 
     public CartItem(int quantity, SKUItem itemSKU) {
         this.quantity = quantity;
-        this.itemSKU = itemSKU;
+        this.SKUitem = itemSKU;
     }
 
     public int getQuantity() {
@@ -18,11 +18,11 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    public SKUItem getItemSKU() {
-        return itemSKU;
+    public SKUItem getSKUitem() {
+        return SKUitem;
     }
 
     public void setItemSKU(SKUItem itemSKU) {
-        this.itemSKU = itemSKU;
+        this.SKUitem = itemSKU;
     }
 }
