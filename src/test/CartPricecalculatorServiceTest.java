@@ -16,19 +16,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CartPricecalculatorServiceTest {
 
+    SKUItem sku1 = new SKUItem("A",50);
+    SKUItem sku2 = new SKUItem("B",30);
+    SKUItem sku3 = new SKUItem("C",20);
+    SKUItem sku4 = new SKUItem("D",15);
+
+    IPromotion promotionA=new PromotionA(sku1,3,130);
+    IPromotion promotionB=new PromotionB(sku2,2,45);
+    IPromotion promotionCD=new PromotionCD(new HashSet<>(Arrays.asList(sku3,sku4)),30);
+
+    CartPricecalculatorService cartService =new CartPricecalculatorService();
 
     @Test
     void testcart(){
-        SKUItem sku1 = new SKUItem("A",50);
-        SKUItem sku2 = new SKUItem("B",30);
-        SKUItem sku3 = new SKUItem("C",20);
-        SKUItem sku4 = new SKUItem("D",15);
-
-        IPromotion promotionA=new PromotionA(sku1,3,130);
-        IPromotion promotionB=new PromotionB(sku2,2,45);
-        IPromotion promotionCD=new PromotionCD(new HashSet<>(Arrays.asList(sku3,sku4)),30);
-
-
         PromotionService.addToActivePromotion(promotionA);
         PromotionService.addToActivePromotion(promotionB);
         PromotionService.addToActivePromotion(promotionCD);
@@ -38,9 +38,21 @@ class CartPricecalculatorServiceTest {
         cart.addCartItem(new CartItem(1,sku2));
         cart.addCartItem(new CartItem(1,sku3));
 
-        CartPricecalculatorService cartService =new CartPricecalculatorService();
+
         assertEquals(100,cartService.calculateTotalPrice(cart));
+    }
 
+    @Test
+    void testcase2(){
+        PromotionService.addToActivePromotion(promotionA);
+        PromotionService.addToActivePromotion(promotionB);
+        PromotionService.addToActivePromotion(promotionCD);
 
+        Cart cart = new Cart();
+        cart.addCartItem(new CartItem(5,sku1));
+        cart.addCartItem(new CartItem(5,sku2));
+        cart.addCartItem(new CartItem(1,sku3));
+
+        assertEquals(370,cartService.calculateTotalPrice(cart));
     }
 }

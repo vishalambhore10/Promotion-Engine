@@ -24,7 +24,9 @@ public class PromotionB implements IPromotion{
     public int calculatePrice(CartItem... cartItem) {
         if(!isApplicable(cartItem))
             return -1;
-        int discountedPrice = price + ((cartItem[0].getQuantity() - this.quantity) * cartItem[0].getSKUitem().getPrice());
+        int group = cartItem[0].getQuantity()/this.quantity;
+        int discountedPrice = (price * group )+
+                ((cartItem[0].getQuantity() - (group*this.quantity)) * cartItem[0].getSKUitem().getPrice());
         return discountedPrice;
     }
 }
