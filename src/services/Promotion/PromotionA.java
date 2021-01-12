@@ -2,7 +2,7 @@ package services.Promotion;
 
 import Models.CartItem;
 import Models.SKUItem;
-
+//////here i don't need to create two separate classes for promotionA and PromitionB but for this cloud be done in single class PromotionAB
 public class PromotionA implements IPromotion{
     SKUItem SKUItem;
     int quantity;
